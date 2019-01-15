@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Http, Headers, Response, RequestOptions, URLSearchParams } from "@angular/http";
+import { Injectable } from "@angular/core"; // tslint:disable-line
+import { Http, Headers, Response, RequestOptions, URLSearchParams } from "@angular/http"; // tslint:disable-line
 /* import { HttpHeaders, HttpClient } from '@angular/common/http';
  */
-import { Observable } from "rxjs";
-import { of } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable } from "rxjs"; // tslint:disable-line
+import { of } from "rxjs"; // tslint:disable-line
+import { map } from "rxjs/operators"; // tslint:disable-line
 
 @Injectable()
 export class ClientsService {
@@ -12,26 +12,26 @@ export class ClientsService {
 
   createAuthorizationHeader(headers: Headers) {
     // tslint:disable-line
-    const username = "mifos";
-    const password = "password";
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    headers.append("Access-Control-Allow-Origin", "*");
+    const username = "mifos"; // tslint:disable-line
+    const password = "password"; // tslint:disable-line
+    headers.append("Authorization", "Basic " + btoa(username + ":" + password)); // tslint:disable-line
+    headers.append("Content-Type", "application/json"); // tslint:disable-line
+    headers.append("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // tslint:disable-line
+    headers.append("Access-Control-Allow-Origin", "*"); // tslint:disable-line
   }
 
   getClients() {
     const headers = new Headers(); // tslint:disable-line
     this.createAuthorizationHeader(headers);
     return this.http
-      .get("https://demo.openmf.org/fineract-provider/api/v1/clients?tenantIdentifier=default&pretty=true", {
+      .get("https://demo.openmf.org/fineract-provider/api/v1/clients?tenantIdentifier=default&pretty=true", {  // tslint:disable-line
         headers: headers
       })
       .pipe(
         map((response: Response) => {
           // tslint:disable-line
           response = response.json();
-          return response["pageItems"];
+          return response["pageItems"]; // tslint:disable-line
         })
       );
   }
@@ -40,9 +40,9 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +  // tslint:disable-line
           clientId +
-          "?tenantIdentifier=default&pretty=true",
+          "?tenantIdentifier=default&pretty=true",  // tslint:disable-line
         {
           headers: headers
         }
@@ -61,10 +61,10 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +  // tslint:disable-line
           clientId +
-          "/accounts" +
-          "?tenantIdentifier=default&pretty=true",
+          "/accounts" +  // tslint:disable-line
+          "?tenantIdentifier=default&pretty=true", // tslint:disable-line
         {
           headers: headers
         }
@@ -83,10 +83,10 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +  // tslint:disable-line
           clientId +
-          "/charges" +
-          "?tenantIdentifier=default&pretty=true",
+          "/charges" +  // tslint:disable-line
+          "?tenantIdentifier=default&pretty=true", // tslint:disable-line
         {
           headers: headers
         }
@@ -105,10 +105,10 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/client/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/client/" +  // tslint:disable-line
           clientId +
-          "/addresses" +
-          "?tenantIdentifier=default&pretty=true",
+          "/addresses" +  // tslint:disable-line
+          "?tenantIdentifier=default&pretty=true", // tslint:disable-line
         {
           headers: headers
         }
@@ -127,10 +127,10 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/notes" +
-          "?tenantIdentifier=default&pretty=true",
+          "/notes" + // tslint:disable-line
+          "?tenantIdentifier=default&pretty=true", // tslint:disable-line
         {
           headers: headers
         }
@@ -150,10 +150,10 @@ export class ClientsService {
     const body = JSON.stringify(notes);
     return this.http
       .post(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/notes" +
-          "?tenantIdentifier=default&pretty=true",
+          "/notes" + // tslint:disable-line
+          "?tenantIdentifier=default&pretty=true", // tslint:disable-line
         notes,
         {
           headers: headers
@@ -171,7 +171,7 @@ export class ClientsService {
     const headers = new Headers(); // tslint:disable-line
     this.createAuthorizationHeader(headers);
     return this.http
-      .get("https://demo.openmf.org/fineract-provider/api/v1/client/" + "addresses/template?tenantIdentifier=default", {
+      .get("https://demo.openmf.org/fineract-provider/api/v1/client/" + "addresses/template?tenantIdentifier=default", { // tslint:disable-line
         headers: headers
       })
       .pipe(
@@ -186,7 +186,7 @@ export class ClientsService {
   postClientAddress(clientId: number, body: any, type: any) {
     const headers = new Headers(); // tslint:disable-line
     const params = new URLSearchParams(); // tslint:disable-line
-    params.set("type", type);
+    params.set("type", type);  // tslint:disable-line
     this.createAuthorizationHeader(headers);
     body = JSON.stringify(body);
     const options = new RequestOptions({
@@ -196,10 +196,10 @@ export class ClientsService {
     });
     return this.http
       .post(
-        "https://demo.openmf.org/fineract-provider/api/v1/client/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/client/" + // tslint:disable-line
           clientId +
-          "/addresses?" +
-          "&tenantIdentifier=default&pretty=true",
+          "/addresses?" + // tslint:disable-line
+          "&tenantIdentifier=default&pretty=true", // tslint:disable-line
         body,
         options
       )
@@ -214,7 +214,7 @@ export class ClientsService {
   putClientAddress(clientId: number, body: any, type: any) {
     const headers = new Headers(); // tslint:disable-line
     const params = new URLSearchParams(); // tslint:disable-line
-    params.set("type", type);
+    params.set("type", type); // tslint:disable-line
     this.createAuthorizationHeader(headers);
     // body = JSON.stringify(body);
     const options = new RequestOptions({
@@ -224,10 +224,10 @@ export class ClientsService {
     });
     return this.http
       .put(
-        "https://demo.openmf.org/fineract-provider/api/v1/client/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/client/" + // tslint:disable-line
           clientId +
-          "/addresses?" +
-          "tenantIdentifier=default",
+          "/addresses?" + // tslint:disable-line
+          "tenantIdentifier=default", // tslint:disable-line
         body,
         options
       )
@@ -244,9 +244,9 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/identifiers/template?tenantIdentifier=default",
+          "/identifiers/template?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -255,7 +255,7 @@ export class ClientsService {
         map((response: Response) => {
           // tslint:disable-line
           response = response.json();
-          return response["allowedDocumentTypes"];
+          return response["allowedDocumentTypes"]; // tslint:disable-line
         })
       );
   }
@@ -265,9 +265,9 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/identifiers/?tenantIdentifier=default",
+          "/identifiers/?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -286,9 +286,9 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .post(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/identifiers/?tenantIdentifier=default",
+          "/identifiers/?tenantIdentifier=default", // tslint:disable-line
         body,
         {
           headers: headers
@@ -307,11 +307,11 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .delete(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/identifiers/" +
+          "/identifiers/" + // tslint:disable-line
           identifierId +
-          "/?tenantIdentifier=default",
+          "/?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -326,13 +326,13 @@ export class ClientsService {
   postClientDocument(clientId: number, body: any) {
     const headers = new Headers(); // tslint:disable-line
     this.createAuthorizationHeader(headers);
-    headers.append("Content-Type", null);
-    headers.append("Accept", "multipart/form-data");
+    headers.append("Content-Type", null); // tslint:disable-line
+    headers.append("Accept", "multipart/form-data"); // tslint:disable-line
     body = JSON.stringify(body);
 
     return this.http
       .post(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + clientId + "/documents/?tenantIdentifier=default",
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + clientId + "/documents/?tenantIdentifier=default", // tslint:disable-line
         body,
         {
           headers: headers
@@ -351,7 +351,7 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + clientId + "/documents/?tenantIdentifier=default",
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + clientId + "/documents/?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -369,11 +369,11 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .delete(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/documents/" +
+          "/documents/" + // tslint:disable-line
           documentId +
-          "/?tenantIdentifier=default",
+          "/?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -391,11 +391,11 @@ export class ClientsService {
     this.createAuthorizationHeader(headers);
     return this.http
       .get(
-        "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
           clientId +
-          "/documents/" +
+          "/documents/" + // tslint:disable-line
           documentId +
-          "/attachment/?tenantIdentifier=default",
+          "/attachment/?tenantIdentifier=default", // tslint:disable-line
         {
           headers: headers
         }
@@ -414,9 +414,9 @@ export class ClientsService {
     console.log(headers);
     return this.http
     .get(
-      "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+      "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
         clientId +
-        "/familymembers/?tenantIdentifier=default",
+        "/familymembers/?tenantIdentifier=default", // tslint:disable-line
       {
         headers: headers
       }
@@ -424,22 +424,21 @@ export class ClientsService {
       .pipe(
         map((response: Response) => {
           // tslint:disable-line
-         
           return response.json();
         })
       );
   }
-  
+
   deleteClientFamilyMember(clientId: number, familyId: number) {
   const headers = new Headers(); // tslint:disable-line
   this.createAuthorizationHeader(headers);
   return this.http
     .delete(
-      "https://demo.openmf.org/fineract-provider/api/v1/clients/" +
+        "https://demo.openmf.org/fineract-provider/api/v1/clients/" + // tslint:disable-line
         clientId +
-        "/familymembers/" +
+        "/familymembers/" + // tslint:disable-line
         familyId +
-        "/?tenantIdentifier=default",
+        "/?tenantIdentifier=default", // tslint:disable-line
       {
         headers: headers
       }
